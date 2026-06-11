@@ -1,20 +1,24 @@
 # 常川 健 / Ken Tsunekawa
 
-フロントエンドエンジニアの常川 健のプロフィールリポジトリです。
+エンジニアの 常川 健 のプロフィールリポジトリ
 
-転職活動や仕事の依頼をご検討の方が、私のことをより深く知っていただくためのリソースとして活用いただけることを意図しています。
+=> 全体をざっくり把握したい方は [こちら（サマリー）](./SUMMARY.md)
 
 ## コンテンツ
 
-- [プロフィールサマリー](./profile/index.md)
-- [自己紹介・人となり](./profile/about.md)
-- [スキル](./profile/skills.md)
-- [職歴・プロジェクト](./profile/career.md)
-- [学歴・資格・受賞歴](./profile/education.md)
+- [プロフィールサマリー](./SUMMARY.md)
+- [自己紹介・人となり](./ABOUT.md)
+- [スキル](./SKILLS.md)
+- [職歴 / 学歴 / 資格 / 受賞歴](./HISTORY.md)
+- [プロジェクト](./PROJECTS.md)
+- [Q&A](./QA.md)
 
-## リンク
+
+## アカウント
 
 - GitHub: [github.com/kentsunekawa](https://github.com/kentsunekawa)
 - LinkedIn: [linkedin.com/in/kentsunekawa](https://www.linkedin.com/in/kentsunekawa/)
 - Wantedly: [wantedly.com/id/kentsunekawa](https://www.wantedly.com/id/kentsunekawa)
-- Email: k.tsunekawa.dev@gmail.com
+
+## 連絡先
+Email: k.tsunekawa.dev@gmail.com
