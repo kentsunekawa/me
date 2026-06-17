@@ -1,35 +1,48 @@
 # スキル
 
-## コアスキル
+## できること
 
-| スキル | 習熟度 | 補足 |
-|---|---|---|
-| React | 実務経験あり | 5つ以上の実務プロジェクトで SPA 開発経験あり |
-| TypeScript | 実務経験あり | 4年以上の実務経験あり |
-| JavaScript | 実務経験あり | 8年以上の実務経験あり |
-| HTML5 | 実務経験あり | 8年以上の実務経験あり |
-| CSS3 | 実務経験あり | 8年以上の実務経験あり |
-| React Native | 実務経験あり | Expo（Managed workflow）で iOS / Android / Web のクロスプラットフォーム開発経験あり |
-| Expo | 実務経験あり | Managed workflow での iOS / Android / Web クロスプラットフォーム開発経験あり |
-| GraphQL | 実務経験あり | 3つ以上の SPA 開発プロジェクトで使用経験あり |
-| Next.js | 使用経験あり | 実務での使用経験はほぼなし。プライベートプロジェクトで使用 |
+### 設計・アーキテクチャ
 
-## その他の技術・ツール
+- 要件からのユースケース定義などの上流からの設計
+- ユースケースをもとにしたデータモデル / テーブル設計
+- 要件をもとにした画面構成の検討・ワイヤーフレーム作成（意匠はデザイナーと分担）、UX/UI 視点での改善提案
+- フロントエンドを中心としたアーキテクチャ選定
+- デザインシステムの設計（コンセプト定義からデザイントークン設計まで）
+- 複数サービスをまたぐ共通基盤（認証・通知・マスターデータ・共通 API）の設計
 
-| カテゴリ | スキル |
+### 実装
+
+- フロントエンドを主軸に、バックエンドのロジック実装まで対応
+- Web / iOS / Android を対象としたクロスプラットフォーム開発
+- デザインを起点とした UI 実装。デザイナーの意図を汲んだ実装や、デザインの無い箇所の補完も行う
+- Web 制作で培った経験を土台に、フルスクラッチの CSS 実装から UI ライブラリの活用まで対応できる
+
+### AI 活用
+
+- AI エージェントを用いた高速開発
+- 設計・実装・レビューのプロセスへの AI の組み込み
+- AI を土台に、これまでの専門領域を越えた範囲を担当
+
+### チーム・推進
+
+- フロントエンドチームのリード（タスク分割・コードレビュー・開発体制の構築）
+- デザイナー / バックエンドエンジニアとの連携、GraphQL スキーマや UI のレビュー
+- 不確定な状況での論点整理と意思決定の推進（議論の構造化）
+
+---
+
+## 技術スタック
+
+| 領域 | 技術 |
 |---|---|
-| 状態管理 | Redux / Apollo Client |
-| UI ライブラリ | Material UI / Styled Components |
-| コンポーネント開発 | Storybook |
-| テスト | Jest / Testing Library / Cypress / Playwright |
-| レガシー | jQuery |
-| コード品質 | ESLint / Prettier |
-| ビルドツール | BABEL / Webpack / Vite / Gulp |
-| バージョン管理 | Git / GitHub |
-| デザインツール | Figma / Illustrator / Photoshop |
-| CMS / EC | WordPress / ecbeing |
+| 言語 | TypeScript / JavaScript |
+| フロントエンド | React / Next.js / React Native（Expo） |
+| スタイリング | Tailwind CSS / shadcn/ui / CSS 設計 / Sass / Styled Components / Material UI |
+| API / データ | GraphQL / Apollo Client / TanStack Query / REST |
+| テスト | Jest / Playwright / Testing Library / Cypress |
+| 開発基盤 | Git・GitHub / Docker / Vite / Biome / Webpack / ESLint / Prettier |
+| デザイン | Figma / Illustrator / Photoshop |
 
-## 習熟度の定義
+> ※ なかでも **バックエンド開発（API・データベース設計）** と **AI を活用した開発プロセスの設計** は、現在主軸を広げている領域として特に注力している。
 
-- **実務経験あり**: 複数の実務プロジェクトで実際に使用し、一定以上の成果を出した技術
-- **使用経験あり**: 実務またはプライベートプロジェクトで使用したことがある技術
