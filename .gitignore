@@ -1,1 +1,10 @@
 resources
+
+# VitePress
+vitePress/node_modules
+vitePress/.vitepress/dist
+vitePress/.vitepress/cache
+
+# 自動生成されるコンテンツのシンボリックリンク（実体はルートの .md）
+vitePress/src/*.md
+!vitePress/src/index.md
