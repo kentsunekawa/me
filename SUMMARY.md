@@ -3,7 +3,7 @@
 **Frontend / Web Developer**
 
 
-<img src="./assets/images/me.webp" alt="常川 健" width="200" height="200" style="border-radius: 50%; object-fit: cover; display: block; margin: 1.5rem 0;" />
+<img src="./assets/images/me_01.jpg" alt="常川 健" width="200" height="200" style="border-radius: 50%; object-fit: cover; display: block; margin: 1.5rem 0;" />
 
 
 ---

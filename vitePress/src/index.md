@@ -6,7 +6,7 @@ hero:
   text: Frontend / Web Developer
   tagline: フロントエンド 10 年、設計・バックエンド開拓中<br />AI を活用した領域横断開発で、事業に貢献したいエンジニア
   image:
-    src: /assets/images/me.webp
+    src: /assets/images/me_01.jpg
     alt: 常川 健
   actions:
     - theme: brand

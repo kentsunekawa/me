@@ -40,11 +40,21 @@
   :root { --vp-home-hero-image-filter: blur(72px); }
 }
 
-/* 画像本体を円形に（正方形にトリミングして丸く） */
+/* アバターのサイズ（この px を変えるだけ。写真も裏のグローも一緒にスケールする） */
+.VPHero .image-container {
+  transform: none;
+}
+/* 画像本体を円形に（正方形にトリミングして丸く）＋コンテナいっぱいに */
 .VPHero .image-src {
   border-radius: 50%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+@media (min-width: 640px) {
+  .VPHero .image-src {
+    max-width: 280px;
+    max-height: 280px;
+  }
 }
 
 /* ---- トップ（ヒーロー）の文字サイズ ---- */
