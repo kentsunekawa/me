@@ -2,12 +2,15 @@
 layout: home
 
 hero:
-  name: 常川 健 / Ken Tsunekawa
-  text: Web Developer
-  tagline: デザインからフロントエンド、設計・バックエンドまで。AI を前提に、職域を越えてアプリケーションを丸ごと作り切るエンジニア。
+  name: 常川 健<span>Ken Tsunekawa</span>
+  text: Frontend / Web Developer
+  tagline: フロントエンド 10 年、設計・バックエンド開拓中<br />AI を活用した領域横断開発で、事業に貢献したいエンジニア
+  image:
+    src: /assets/images/me.webp
+    alt: 常川 健
   actions:
     - theme: brand
-      text: プロフィールを見る
+      text: サマリーを見る
       link: /SUMMARY
     - theme: alt
       text: プロジェクト
@@ -21,6 +24,6 @@ features:
     details: 不確定要素の多い状況でも、関係各所と議論しながら物事を決めて前に進め、ゼロからの新規構築を任されることが多い。
   - title: デザイン・UX/UI のバックグラウンド
     details: エンジニアとデザイン両方の視点を持ち、デザインがない中での実装から、デザインシステムや開発フローの整備まで手がける。
-  - title: 物事を構造で捉える力
-    details: 混ざっている役割や余計なつながりに気づいて切り分け、それぞれがちゃんと成り立つように整理する。
+  - title: AI を前提に、領域を越える
+    details: より良い UX は、全体を一貫して作ってこそ実現できる。だから領域の線引きにとらわれず、AI を相棒に踏み込んでいく。
 ---

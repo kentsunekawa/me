@@ -11,10 +11,10 @@ const srcDir = join(here, '..', 'src') // vitePress/src/
 
 const EXCLUDE = new Set(['README.md'])
 
-// 既存のシンボリックリンクを一旦掃除（実ファイル＝index.md などは触らない）
+// 既存の .md シンボリックリンクを一旦掃除（実ファイル＝index.md や assets リンクは触らない）
 for (const name of readdirSync(srcDir)) {
   const p = join(srcDir, name)
-  if (lstatSync(p).isSymbolicLink()) rmSync(p)
+  if (name.endsWith('.md') && lstatSync(p).isSymbolicLink()) rmSync(p)
 }
 
 // ルートの *.md をすべてリンク

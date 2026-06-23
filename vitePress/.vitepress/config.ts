@@ -5,7 +5,7 @@ import { defineConfig } from 'vitepress'
 // index.md だけは src/ 直下の実ファイル。
 export default defineConfig({
   lang: 'ja-JP',
-  title: '常川 健 / Ken Tsunekawa',
+  title: 'Ken Tsunekawa',
   description: 'Web Developer / Front-End Developer のプロフィール',
 
   // GitHub Pages（プロジェクトページ）: https://kentsunekawa.github.io/me/
@@ -23,25 +23,18 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: 'プロフィール', link: '/SUMMARY' },
+      { text: 'サマリー', link: '/SUMMARY' },
       { text: '自己紹介', link: '/ABOUT' },
-      { text: 'プロジェクト', link: '/PROJECTS' },
       { text: 'Q&A', link: '/QA' },
     ],
-
     sidebar: [
       {
-        text: 'プロフィール',
+        // text: 'プロフィール',
         items: [
           { text: 'サマリー', link: '/SUMMARY' },
+          { text: '自己紹介', link: '/ABOUT' },
           { text: 'スキル', link: '/SKILLS' },
-          { text: '職歴・経歴', link: '/HISTORY' },
-        ],
-      },
-      {
-        text: '詳細',
-        items: [
-          { text: '自己紹介・人となり', link: '/ABOUT' },
+          { text: '経歴', link: '/HISTORY' },
           { text: 'プロジェクト', link: '/PROJECTS' },
           { text: 'Q&A', link: '/QA' },
         ],
@@ -49,11 +42,10 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/kentsunekawa' },
+      { icon: 'github', link: 'https://github.com/kentsunekawa/me/' },
     ],
 
     footer: {
-      message: 'Built with VitePress',
       copyright: '© 2026 Ken Tsunekawa',
     },
 

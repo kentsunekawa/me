@@ -1,4 +1,5 @@
 # 常川 健 / Ken Tsunekawa
+**Frontend / Web Developer**
 
 このリポジトリは...
 （リポジトリの説明を書く。ここは話し口調で OK）

@@ -1,0 +1,106 @@
+/* =========================================================
+   サイト全体の見た目カスタム
+   数値をいじれば反映される（dev サーバーは自動リロード）
+   ========================================================= */
+
+/* ---- ブランドカラー（オレンジ） ---- */
+/* brand-1 が主役。リンク・ボタン・ヒーローの光彩などが全部これに連動する */
+:root {
+  --vp-c-brand-1: #2b44ff; /* 主役（ビビッド青） */
+  --vp-c-brand-2: #1f37e6; /* ホバー等で一段濃く */
+  --vp-c-brand-3: #1a2dbf; /* さらに濃い用途 */
+  --vp-c-brand-soft: rgba(43, 68, 255, 0.14); /* 薄い背景 */
+}
+.dark {
+  --vp-c-brand-1: #7d8cff; /* 暗い背景用に明るめ */
+  --vp-c-brand-2: #5468ff;
+  --vp-c-brand-3: #2b44ff;
+  --vp-c-brand-soft: rgba(125, 140, 255, 0.16);
+}
+
+/* ---- ヒーローの背景（上部にブランド色の光彩） ---- */
+.VPHome {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 0%,
+    color-mix(in srgb, var(--vp-c-brand-1) 7%, transparent),
+    transparent 70%
+  );
+}
+
+/* ---- ヒーロー画像：丸型＋裏のグロー ---- */
+:root {
+  /* 画像の裏に出る光彩（オレンジ・控えめ）。半透明にして主張を抑える */
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, rgba(43, 68, 255, 0.26), rgba(125, 140, 255, 0.18));
+  --vp-home-hero-image-filter: blur(56px);
+}
+@media (min-width: 640px) {
+  :root { --vp-home-hero-image-filter: blur(60px); }
+}
+@media (min-width: 960px) {
+  :root { --vp-home-hero-image-filter: blur(72px); }
+}
+
+/* 画像本体を円形に（正方形にトリミングして丸く） */
+.VPHero .image-src {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* ---- トップ（ヒーロー）の文字サイズ ---- */
+
+/* 大見出し（name：グラデーションがかかる名前） */
+.VPHero .name {
+  font-size: 40px;
+  line-height: 1.1;
+}
+/* name 内の英名 span（常川 健 の後ろ） */
+.VPHero .name span {
+  font-size: 70%;
+  padding-left: 0.5em;
+}
+
+/* メインテキスト（text：Frontend / Web Developer の部分）
+   サイズは元の約50%。色は tagline と同じグレー（--vp-c-text-2）に */
+/* name と text の間隔（heading は flex なので gap で空ける） */
+.VPHero .heading {
+  gap: 8px;
+}
+.VPHero .text {
+  font-size: 16px;
+  line-height: 1.2;
+}
+/* 画像ありの時は text がブランド色＋fill-color で上書きされるので、ここで打ち消す */
+.VPHero.has-image .text {
+  color: var(--vp-c-text-2);
+  -webkit-text-fill-color: var(--vp-c-text-2);
+}
+
+/* タグライン（下の説明文）。白に */
+.VPHero .tagline {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--vp-c-text-1); /* ライト：読める濃色 */
+  padding-top: 16px;
+}
+.dark .VPHero .tagline {
+  color: #fff; /* ダークだけ白 */
+}
+
+/* 画面が広い時はひと回り大きく */
+@media (min-width: 640px) {
+  .VPHero .name { font-size: 56px; }
+  .VPHero .text { font-size: 22px; }
+}
+@media (min-width: 960px) {
+  .VPHero .name { font-size: 64px; }
+  .VPHero .text { font-size: 26px; }
+  .VPHero .tagline { font-size: 20px; }
+}
+
+/* ---- 本文の基準フォントサイズ（全ページに効く）。使う時はコメントアウト解除 ---- */
+/*
+:root {
+  --vp-font-size-base: 16px;
+}
+*/

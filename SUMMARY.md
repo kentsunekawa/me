@@ -1,9 +1,9 @@
 # 常川 健 / Ken Tsunekawa
 
-**Web Developer / Front-End Developer**
+**Frontend / Web Developer**
 
 
-🚧 写真配置
+<img src="./assets/images/me.webp" alt="常川 健" width="200" height="200" style="border-radius: 50%; object-fit: cover; display: block; margin: 1.5rem 0;" />
 
 
 ---
@@ -72,7 +72,7 @@
 | 2018年1月〜2020年9月 | 株式会社 I-ne | HTML コーダー |
 | 2016年7月〜2017年11月 | リンクオブマインド株式会社 | Web デザイナー / HTML コーダー |
 
-→ 詳細: [職歴・プロジェクト](./HISTORY.md)
+→ 詳細: [職歴 / 学歴 / 資格 / 受賞歴](./HISTORY.md)
 
 ---
 
@@ -85,7 +85,7 @@
 
 Web 制作においては国内外6つのデザインアワード受賞に貢献。
 
-→ 詳細: [学歴・資格・受賞歴](./HISTORY.md)
+→ 詳細: [職歴 / 学歴 / 資格 / 受賞歴](./HISTORY.md)
 
 ---
 
