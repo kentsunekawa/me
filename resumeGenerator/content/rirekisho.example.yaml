@@ -34,15 +34,26 @@ contact:
 
 history:
   - heading: 学歴
-  - { year: 2009, month: 4, text: ○○大学○○学部○○学科　入学 }
-  - { year: 2013, month: 3, text: ○○大学○○学部○○学科　卒業 }
+  - year: 2009
+    month: 4
+    text: ○○大学○○学部○○学科　入学
+  - year: 2013
+    month: 3
+    text: ○○大学○○学部○○学科　卒業
   - heading: 職歴
-  - { year: 2013, month: 4, text: 株式会社○○　入社 }
-  - { year: 2020, month: 3, text: 株式会社○○　一身上の都合により退社 }
-  - { text: 現在に至る, right: 以上 }
+  - year: 2013
+    month: 4
+    text: 株式会社○○　入社
+  - year: 2020
+    month: 3
+    text: 株式会社○○　一身上の都合により退社
+  - text: 現在に至る
+    right: 以上
 
 qualifications:
-  - { year: 2012, month: 3, text: 普通自動車第一種運転免許　取得 }
+  - year: 2012
+    month: 3
+    text: 普通自動車第一種運転免許　取得
 
 # 志望動機は提出先ごとに用意し、表示時に切り替える（activeMotivation で既定を指定）。
 activeMotivation: 株式会社○○（A 社）

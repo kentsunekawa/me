@@ -40,28 +40,60 @@ skills:
     - title: チーム・推進
       body: フロントエンドチームのリード（タスク分割・コードレビュー・体制構築）。デザイナー／バックエンドとの連携。不確定な状況での論点整理と意思決定の推進。
   stack:
-    - { label: 言語, value: TypeScript / JavaScript }
-    - { label: フロントエンド, value: React / Next.js / React Native（Expo） }
-    - { label: スタイリング, value: Tailwind CSS / shadcn/ui / Sass / Material UI / CSS 設計 }
-    - { label: API・データ, value: GraphQL / Apollo / TanStack Query / REST / PostgreSQL }
-    - { label: テスト, value: Jest / Playwright / Testing Library / Cypress }
-    - { label: 基盤・ツール, value: Git・GitHub / Docker / Vite / Figma / AI エージェント }
+    - label: 言語
+      value: TypeScript / JavaScript
+    - label: フロントエンド
+      value: React / Next.js / React Native（Expo）
+    - label: スタイリング
+      value: Tailwind CSS / shadcn/ui / Sass / Material UI / CSS 設計
+    - label: API・データ
+      value: GraphQL / Apollo / TanStack Query / REST / PostgreSQL
+    - label: テスト
+      value: Jest / Playwright / Testing Library / Cypress
+    - label: 基盤・ツール
+      value: Git・GitHub / Docker / Vite / Figma / AI エージェント
 
 # ── 学歴 ──────────────────────────────────
 education:
-  - { period: 2007年4月 〜 2011年3月, school: 近畿大学 理工学部 建築学科 }
-  - { period: 2011年4月 〜 2013年3月, school: 大阪総合デザイン専門学校 ビジュアルコミュニケーションデザイン学科 }
+  - period: 2007年4月 〜 2011年3月
+    school: 近畿大学 理工学部 建築学科
+  - period: 2011年4月 〜 2013年3月
+    school: 大阪総合デザイン専門学校 ビジュアルコミュニケーションデザイン学科
 
 # ── 職歴（さらっと一覧）──────────────────────
 # kind は職種の「種類」を表す enum。表示時にグループ分け＆各群を期間の新しい順でソートする。
 #   develop … Web 開発 / create … Web 制作
 careers:
-  - { kind: develop, period: 2025年4月 〜 現在, company: 株式会社 YOLO JAPAN, employment: 正社員, role: フロントエンドエンジニア }
-  - { kind: develop, period: 2024年7月 〜 2025年3月, company: 株式会社 WiseVine, employment: 正社員, role: フロントエンドエンジニア }
-  - { kind: develop, period: 2021年6月 〜 2024年6月, company: ALTURA X 株式会社, employment: 正社員 → 業務委託, role: フロントエンドチームリーダー / モバイルアプリエンジニア }
-  - { kind: create, period: 2020年10月 〜 2021年1月, company: nosh 株式会社, employment: 正社員, role: マークアップエンジニア }
-  - { kind: create, period: 2018年1月 〜 2020年9月, company: 株式会社 I-ne, employment: 正社員, role: HTML コーダー }
-  - { kind: create, period: 2016年7月 〜 2017年11月, company: リンクオブマインド株式会社, employment: 正社員, role: Web デザイナー / HTML コーダー }
+  - kind: develop
+    period: 2025年4月 〜 現在
+    company: 株式会社 YOLO JAPAN
+    employment: 正社員
+    role: フロントエンドエンジニア
+  - kind: develop
+    period: 2024年7月 〜 2025年3月
+    company: 株式会社 WiseVine
+    employment: 正社員
+    role: フロントエンドエンジニア
+  - kind: develop
+    period: 2021年6月 〜 2024年6月
+    company: ALTURA X 株式会社
+    employment: 正社員 → 業務委託
+    role: フロントエンドチームリーダー / モバイルアプリエンジニア
+  - kind: create
+    period: 2020年10月 〜 2021年1月
+    company: nosh 株式会社
+    employment: 正社員
+    role: マークアップエンジニア
+  - kind: create
+    period: 2018年1月 〜 2020年9月
+    company: 株式会社 I-ne
+    employment: 正社員
+    role: HTML コーダー
+  - kind: create
+    period: 2016年7月 〜 2017年11月
+    company: リンクオブマインド株式会社
+    employment: 正社員
+    role: Web デザイナー / HTML コーダー
 
 # ── プロジェクト（主役・独立軸）──────────────
 # projectsNote: 見出し直下に出る注記（抜粋である旨を示す）。
@@ -122,17 +154,24 @@ projects:
 
 # ── 資格・免許 ────────────────────────────
 qualifications:
-  - { date: 2008年2月, name: 普通自動車運転免許 }
+  - date: 2008年2月
+    name: 普通自動車運転免許
 
 # ── 受賞歴（さらっと）─────────────────────────
 # Web 制作業務において、マークアップエンジニアとして以下の受賞に貢献。
 awards:
-  - { date: 2021年4月, name: CSS WINNER（STAR） }
-  - { date: 2021年4月, name: CSS Design Awards（SPECIAL KUDOS） }
-  - { date: 2020年3月, name: DesignAwards.Asia（STAR） }
-  - { date: 2020年3月, name: CSS WINNER（STAR） }
-  - { date: 2019年5月, name: CSS WINNER（SOTD） }
-  - { date: 2019年3月, name: DesignAwards.Asia（DOTD） }
+  - date: 2021年4月
+    name: CSS WINNER（STAR）
+  - date: 2021年4月
+    name: CSS Design Awards（SPECIAL KUDOS）
+  - date: 2020年3月
+    name: DesignAwards.Asia（STAR）
+  - date: 2020年3月
+    name: CSS WINNER（STAR）
+  - date: 2019年5月
+    name: CSS WINNER（SOTD）
+  - date: 2019年3月
+    name: DesignAwards.Asia（DOTD）
 
 # ── 自己 PR（項目立て）────────────────────────
 # 各セクションは title を持ち、配下に items（小見出し付き）か body（散文）のどちらかを持つ。
