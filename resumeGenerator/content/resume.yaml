@@ -1,0 +1,157 @@
+# 職務経歴書の構造化データ（正本）
+#
+# - 初版は profile の md（SUMMARY / PROJECTS / HISTORY / SKILLS / ABOUT）から
+#   職務経歴書用に要約・再構成して生成した。以降はこのファイルが正本。
+# - スキーマ（フィールドの形）は React テンプレートと一致させる契約。
+#   キー名・ネスト構造は崩さず、値（中身）を編集して育てる。
+# - ページ割りの想定：
+#     1ページ目: meta / summary / skills / education / careers
+#     2ページ目: projects
+#     3ページ目: qualifications / awards / pr
+
+meta:
+  title: 職務経歴書
+  date: 2026年6月27日
+  name: 常川 健
+  birth: 1988年5月12日
+  contact:
+    - 大阪府大阪市
+    - k.tsunekawa.dev@gmail.com
+
+# ── 職務要約 ──────────────────────────────
+summary: |
+  2016 年より約 10 年、Web 業界でキャリアを積んできました。Web デザイナー・コーダーとして
+  Web 制作に従事した後、2021 年より Web アプリケーション開発へ軸足を移し、フロントエンド
+  エンジニア／フロントエンドチームリーダーとして、医療・自治体・官公庁・人材など多様な
+  ドメインの新規プロダクト立ち上げに携わってきました。フロントエンドを主軸に UX/UI 設計から
+  実装までを一貫して担い、近年は AI を活用しながら設計・バックエンド領域へと範囲を広げて
+  います。不確定な状況でも関係者と議論しながら開発を前に進め、ゼロからの新規構築を任される
+  ことが多いのが強みです。
+
+# ── 活かせる経験・知識・スキル ────────────────
+skills:
+  highlights:
+    - title: 設計
+      body: 要件からのユースケース定義・データモデル設計、デザインシステム設計、フロントエンド中心のアーキテクチャ選定、複数サービス共通基盤（認証・通知・マスターデータ・共通 API）の設計。
+    - title: 実装
+      body: フロントエンドを主軸にバックエンドのロジックまで対応。Web / iOS / Android のクロスプラットフォーム開発。デザインを起点とした UI 実装と、デザインのない箇所の補完。
+    - title: AI 活用
+      body: AI エージェントを用いた高速開発。設計・実装・レビューのプロセスへの AI 組み込み。専門領域を越えた範囲の担当。
+    - title: チーム・推進
+      body: フロントエンドチームのリード（タスク分割・コードレビュー・体制構築）。デザイナー／バックエンドとの連携。不確定な状況での論点整理と意思決定の推進。
+  stack:
+    - { label: 言語, value: TypeScript / JavaScript }
+    - { label: フロントエンド, value: React / Next.js / React Native（Expo） }
+    - { label: スタイリング, value: Tailwind CSS / shadcn/ui / Sass / Material UI / CSS 設計 }
+    - { label: API・データ, value: GraphQL / Apollo / TanStack Query / REST / PostgreSQL }
+    - { label: テスト, value: Jest / Playwright / Testing Library / Cypress }
+    - { label: 基盤・ツール, value: Git・GitHub / Docker / Vite / Figma / AI エージェント }
+
+# ── 学歴 ──────────────────────────────────
+education:
+  - { period: 2007年4月 〜 2011年3月, school: 近畿大学 理工学部 建築学科 }
+  - { period: 2011年4月 〜 2013年3月, school: 大阪総合デザイン専門学校 ビジュアルコミュニケーションデザイン学科 }
+
+# ── 職歴（さらっと一覧）──────────────────────
+# kind は職種の「種類」を表す enum。表示時にグループ分け＆各群を期間の新しい順でソートする。
+#   develop … Web 開発 / create … Web 制作
+careers:
+  - { kind: develop, period: 2025年4月 〜 現在, company: 株式会社 YOLO JAPAN, employment: 正社員, role: フロントエンドエンジニア }
+  - { kind: develop, period: 2024年7月 〜 2025年3月, company: 株式会社 WiseVine, employment: 正社員, role: フロントエンドエンジニア }
+  - { kind: develop, period: 2021年6月 〜 2024年6月, company: ALTURA X 株式会社, employment: 正社員 → 業務委託, role: フロントエンドチームリーダー / モバイルアプリエンジニア }
+  - { kind: create, period: 2020年10月 〜 2021年1月, company: nosh 株式会社, employment: 正社員, role: マークアップエンジニア }
+  - { kind: create, period: 2018年1月 〜 2020年9月, company: 株式会社 I-ne, employment: 正社員, role: HTML コーダー }
+  - { kind: create, period: 2016年7月 〜 2017年11月, company: リンクオブマインド株式会社, employment: 正社員, role: Web デザイナー / HTML コーダー }
+
+# ── プロジェクト（主役・独立軸）──────────────
+projects:
+  - name: 在日外国人向けライフサポートプラットフォームの新規構築
+    period: 2026年4月 〜 8月
+    role: PO / エンジニア（全工程担当）
+    company: 株式会社 YOLO JAPAN
+    team: PdM 1名 / メンバー 4名
+    stack: TypeScript / Next.js / React / Refine / shadcn/ui / Better Auth / PostgreSQL
+    overview: 求人・アンケート・チャット・体験投稿と、それらのハブとなるプラットフォームで構成される在日外国人向けライフサポートサービスの新規構築。
+    highlights:
+      - AI を活用し職域の区分をなくす開発体制のもと、1 サービスを要件定義〜設計・デザイン・実装・テストまで全工程を一人で担当。
+      - ハブとなるプラットフォームを担当し、認証基盤・マスターデータ・横断 API・デザイントークン／UI コンポーネントなど共通基盤を設計・開発。基盤を一箇所に集約し、機能重複の回避とサービス間の一貫性を実現。
+
+  - name: 在日外国人向け求人サイトの開発
+    period: 2025年4月 〜 2026年1月
+    role: フロントエンドエンジニア
+    company: 株式会社 YOLO JAPAN
+    team: PdM 1名 / PO 2名 / デザイナー 2名 / BE 3名 / FE 3名
+    stack: TypeScript / Next.js / React / Material UI
+    overview: 日本語を含む 7 言語に対応した多言語 Web サービス。
+    highlights:
+      - 要件定義をもとにしたワイヤーフレーム作成から実装・リリースまでを一貫して担当。UX/UI 観点での改善提案も行いながら設計・実装を推進。
+
+  - name: 官公庁向け 情報公開・可視化サイトの新規構築
+    period: 2024年8月 〜 10月
+    role: フロントエンドエンジニア
+    company: 株式会社 WiseVine
+    team: PdM 1名 / デザイナー 1名 / BE 1名 / FE 2名 / インフラ 1名
+    stack: TypeScript / React / Ant Design
+    overview: 行政事業に関する情報を一般に向けて公開・可視化する、公共性の高い Web サイト。
+    highlights:
+      - 制作寄りのトップ／コンテンツページも多い構成を、Web 制作で培った実装スピードで担当し、厳しいスケジュールに対応。「Figma のデザインをそのまま見ているよう」と評価された。
+
+  - name: 健康診断結果閲覧アプリのクロスプラットフォーム開発（iOS / Android / Web）
+    period: 2022年3月 〜 2024年6月
+    role: フロントエンドチームリーダー / モバイルアプリエンジニア
+    company: ALTURA X 株式会社
+    team: PdM 1名 / デザイナー 1名 / BE 4〜9名 / FE 2〜3名
+    stack: TypeScript / React / React Native / Expo / GraphQL / Apollo
+    overview: 医科大学と共同で発足。健診・精密検査の結果をスマホで閲覧でき、予約・問診・各種リマインドも備えるアプリ。
+    highlights:
+      - アプリ開発経験者 0 の状況で、環境構築から全プラットフォームの初回リリース・運用まで、クライアントアプリ開発の大部分を一人で担当。
+      - React Native × Expo（Managed workflow）を選定。UI ライブラリはデザイナーと議論のうえ React Native Paper を採用。
+
+  - name: 健康診断システムのクライアント SPA 開発
+    period: 2022年3月 〜 2024年6月
+    role: フロントエンドチームリーダー / フロントエンドエンジニア
+    company: ALTURA X 株式会社
+    team: PdM 1名 / デザイナー 1名 / BE 4〜9名 / FE 2〜4名
+    stack: TypeScript / React / GraphQL / Apollo / Material UI / Jest / Cypress / Playwright
+    overview: 医療機関が健診結果の登録・編集・閲覧や受診予約を管理するアプリケーション。
+    highlights:
+      - 共通ロジック／関数を先行して開発し、経験の浅いメンバーも手を止めず開発を続けられる体制を構築。高速な開発速度を維持。
+      - バックエンドの GraphQL スキーマレビューを担当し手戻りを最小化。デザイナーとはエラー表示・インタラクション仕様を随時議論。
+
+  - name: 医療機関向けタレントマネジメントシステムのクライアント SPA 開発
+    period: 2021年6月 〜 2022年2月
+    role: フロントエンドチームリーダー / フロントエンドエンジニア
+    company: ALTURA X 株式会社
+    team: PdM 1名 / デザイナー 1名 / BE 2名 / FE 2名
+    stack: TypeScript / React / GraphQL / Apollo / Cypress
+    overview: 360°評価・従業員アンケート・チャット機能などにより、組織の人事データの収集と分析を可能にするアプリケーション。
+    highlights:
+      - Web エンジニアとして初プロジェクトながら、立ち上げ段階からアーキテクチャ選定・開発環境構築を担当。当時の Vue の TS サポートの手薄さから React を提案し採用。
+
+# ── 資格・免許 ────────────────────────────
+qualifications:
+  - { date: 2008年2月, name: 普通自動車運転免許 }
+
+# ── 受賞歴（さらっと）─────────────────────────
+# Web 制作業務において、マークアップエンジニアとして以下の受賞に貢献。
+awards:
+  - { date: 2021年4月, name: CSS WINNER（STAR） }
+  - { date: 2021年4月, name: CSS Design Awards（SPECIAL KUDOS） }
+  - { date: 2020年3月, name: DesignAwards.Asia（STAR） }
+  - { date: 2020年3月, name: CSS WINNER（STAR） }
+  - { date: 2019年5月, name: CSS WINNER（SOTD） }
+  - { date: 2019年3月, name: DesignAwards.Asia（DOTD） }
+
+# ── 自己 PR（項目立て）────────────────────────
+# 各セクションは title を持ち、配下に items（小見出し付き）か body（散文）のどちらかを持つ。
+pr:
+  - title: 強み・特性
+    items:
+      - title: アプリケーション開発を進める力
+        body: 不確定要素の多い状況でも、関係各所と議論しながら一つずつ物事を決めて前に進めます。新規構築では何が必要かを自ら定義し、スケジュールを引いて逆算しながら開発を推進。タスクの割り振りや進捗管理も担い、立ち上げ段階からの参画やゼロからの新規構築を任されることが多くあります。
+      - title: デザイン・UX/UI のバックグラウンド
+        body: グラフィック／Web デザインの経験を土台に、エンジニア視点とデザイン視点の両面から改善提案ができます。デザインのない中での実装やデザイナーの意図を汲んだ実装、要件からの画面設計・ワイヤーフレーム作成も担当。近年はデザインシステム設計や、Figma と AI エージェントを MCP で繋いだ実装の高速化など、デザインと開発フローの整備も手がけました。
+      - title: 物事を構造で捉える力
+        body: 一つに見えるものが別々の役割を抱えていたり、切り離せるものが余計に結合していたりする箇所に気づき、要素を分けて整理し直します。たとえば「友達紹介キャンペーン」の設計レビューでは、汎用的なキャンペーン／単独で成り立つ友達紹介／両者を紐づける友達紹介キャンペーンの 3 つに分解する構造を提案し、そのまま採用・実装されました。
+  - title: 今後の展望
+    body: AI により実装のハードルが下がる時代において、価値の中心は「何をどう作るか」を決める設計・意思決定へ移ると考えています。設計は実装を伴ってこそ意味を持つため、現在は個人開発でバックエンドを書きながら API・データベースの設計・実装を習得中。特定の領域に閉じず、UX から逆算した設計から実装までを一貫して担い、プロダクトの意思決定を担えるエンジニアを目指しています。
