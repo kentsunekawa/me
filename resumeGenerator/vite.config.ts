@@ -10,4 +10,11 @@ import yaml from '@rollup/plugin-yaml'
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/me/resume/' : '/',
   plugins: [react(), yaml()],
+  build: {
+    rollupOptions: {
+      // 履歴書(rirekisho.html)は個人情報を含むため本番ビルドに含めない（＝公開しない）。
+      // dev サーバーは入口設定に関係なく rirekisho.html を配信するのでローカル確認はできる。
+      input: { index: 'index.html' },
+    },
+  },
 }))

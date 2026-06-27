@@ -2,3 +2,7 @@ node_modules
 dist
 *.local
 *.tsbuildinfo
+
+# 履歴書の個人情報（住所・写真など）は content/private/ 配下にまとめ、ローカルのみ。
+# 公開リポにはコミットしない（テンプレは content/ 直下に置く）。
+content/private/

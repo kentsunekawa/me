@@ -1,0 +1,57 @@
+# 履歴書のテンプレート（プレースホルダ）。これはコミットする。
+#
+# 実データ（個人情報）は content/private/rirekisho.yaml にコピーして編集する：
+#   cp content/rirekisho.example.yaml content/private/rirekisho.yaml
+# content/private/ は gitignore 済み（住所・写真など個人情報を公開リポに出さないため）。
+# 履歴書ページ（rirekisho.html）は本番ビルドから除外しており、デプロイもされない。
+
+meta:
+  title: 履歴書
+  date: 2025年1月1日現在
+
+basic:
+  furigana: やまだ　たろう
+  name: 山田　太郎
+  birthYear: 1990
+  birthMonth: 1
+  birthDay: 1
+  age: 35
+  gender: 男
+
+address:
+  furigana: とうきょうと ちよだく ○○
+  zip: 100-0000
+  address: 東京都千代田区○○1-2-3 ○○マンション101
+  tel: 090-0000-0000
+  email: taro@example.com
+
+contact:
+  furigana: ''
+  zip: ''
+  address: ''
+  tel: ''
+  email: ''
+
+history:
+  - heading: 学歴
+  - { year: 2009, month: 4, text: ○○大学○○学部○○学科　入学 }
+  - { year: 2013, month: 3, text: ○○大学○○学部○○学科　卒業 }
+  - heading: 職歴
+  - { year: 2013, month: 4, text: 株式会社○○　入社 }
+  - { year: 2020, month: 3, text: 株式会社○○　一身上の都合により退社 }
+  - { text: 現在に至る, right: 以上 }
+
+qualifications:
+  - { year: 2012, month: 3, text: 普通自動車第一種運転免許　取得 }
+
+# 志望動機は提出先ごとに用意し、表示時に切り替える（activeMotivation で既定を指定）。
+activeMotivation: 株式会社○○（A 社）
+motivations:
+  - target: 株式会社○○（A 社）
+    body: |
+      （A 社向けの志望の動機・自己 PR をここに記載する）
+  - target: 株式会社△△（B 社）
+    body: |
+      （B 社向けの志望の動機・自己 PR をここに記載する）
+
+request: 貴社規定に従います
