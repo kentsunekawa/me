@@ -1,6 +1,8 @@
 # 常川 健 / Ken Tsunekawa
 **Frontend / Web Developer**
 
+🌐 公開サイト: **https://kentsunekawa.github.io/me/**
+
 ここは、エンジニア 常川 健 のプロフィールリポジトリです。これまでの経歴やスキル、手がけてきたプロジェクト、大切にしている考え方や人となりまで、一通りまとめました。
 
 お急ぎの方は [こちら（サマリー）](./SUMMARY.md) をご覧いただき、

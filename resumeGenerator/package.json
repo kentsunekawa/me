@@ -1,0 +1,24 @@
+{
+  "name": "resume-generator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "職務経歴書（A4・印刷用）を React + Vite で組み、ブラウザの印刷から PDF 出力する",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  }
+}
