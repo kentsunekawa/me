@@ -1,0 +1,365 @@
+/* =========================================================
+   職務経歴書 A4（縦・印刷用）— ミニマル
+   - 装飾を抑え、余白と文字の塊でリズムを作る
+   - 線は細く、補足としてのみ使う
+   - 画面では A4 カードを並べてプレビュー、印刷で 1 シート = 1 ページ
+   ========================================================= */
+
+:root {
+  --page-w: 210mm;
+  --page-h: 297mm;
+  --page-pad-y: 16mm;
+  --page-pad-x: 17mm;
+
+  --ink: #1a1a1a;
+  --muted: #767676;
+  --faint: #a9a9a9;
+  --line: #e7e7e7;
+  --line-ink: #1a1a1a;
+
+  --base: 8.5pt;
+  --gap: 28px; /* セクション間の基本リズム（塊どうしは離す） */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic',
+    'YuGothic', 'Noto Sans JP', 'Meiryo', sans-serif;
+  color: var(--ink);
+  font-size: var(--base);
+  line-height: 1.5;
+  font-feature-settings: 'palt' 1;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p {
+  margin: 0;
+}
+
+/* ---- 画面プレビュー ---- */
+@media screen {
+  body {
+    background: #e9eaec;
+    padding: 30px 0 44px;
+  }
+  .sheet {
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.12);
+    margin: 0 auto 28px;
+  }
+}
+
+/* ---- A4 シート ---- */
+.sheet {
+  position: relative;
+  width: var(--page-w);
+  min-height: var(--page-h);
+  padding: var(--page-pad-y) var(--page-pad-x);
+  background: #fff;
+}
+
+.sheet-footer {
+  position: absolute;
+  bottom: 10mm;
+  right: var(--page-pad-x);
+  font-size: 7pt;
+  letter-spacing: 0.25em;
+  color: var(--faint);
+}
+
+/* ---- ドキュメントヘッダー ---- */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 14px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--line-ink);
+}
+.doc-title {
+  margin: 0;
+  font-size: 16pt;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--ink);
+}
+.doc-header-meta {
+  text-align: right;
+  font-size: 8pt;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.doc-name {
+  font-size: 11pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+/* ---- セクション ---- */
+.block {
+  margin-bottom: var(--gap);
+}
+.block:last-child {
+  margin-bottom: 0;
+}
+.block-title {
+  margin: 0 0 11px;
+  padding-bottom: 7px;
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---- 職務要約 ---- */
+.summary-text {
+  text-align: justify;
+}
+
+/* ---- スキル：ハイライト ---- */
+.skill-highlights {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+.skill-highlights li {
+  display: flex;
+  gap: 1.6em;
+  margin-bottom: 3px;
+}
+.sh-title {
+  flex: 0 0 6em;
+  font-weight: 700;
+}
+.sh-body {
+  flex: 1;
+  text-align: justify;
+}
+
+/* ---- スキル：スタック一覧 ---- */
+.stack-list {
+  display: grid;
+  gap: 2px;
+}
+.stack-row {
+  display: grid;
+  grid-template-columns: 7em 1fr;
+  align-items: start;
+  gap: 1.4em;
+}
+.stack-label {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* ---- 学歴 ---- */
+.simple-table,
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.simple-table td,
+.mini-table td {
+  padding: 2.5px 0;
+  vertical-align: top;
+}
+.e-period,
+.m-date {
+  color: var(--muted);
+  white-space: nowrap;
+}
+.e-period {
+  width: 15em;
+}
+.mini-table .m-date {
+  width: 9em;
+}
+
+/* ---- 職歴 ---- */
+.career-group {
+  margin-bottom: 14px;
+}
+.career-group:last-child {
+  margin-bottom: 0;
+}
+.career-group-title {
+  margin: 0 0 5px;
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+.career-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.career-table td {
+  padding: 3px 1.4em 3px 0;
+  vertical-align: top;
+}
+.career-table .c-period {
+  width: 12em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.career-table .c-company {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.career-table .c-employment {
+  width: 9em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.career-table .c-role {
+  color: var(--muted);
+}
+
+/* ---- プロジェクト ---- */
+.projects-note {
+  margin-bottom: 14px;
+  font-size: 8pt;
+  color: var(--muted);
+}
+.project {
+  margin-bottom: 30px;
+}
+.project:last-child {
+  margin-bottom: 0;
+}
+.project-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+  margin-bottom: 4px;
+}
+.project-name {
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.project-period {
+  flex: none;
+  font-size: 8pt;
+  color: var(--muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+  font-size: 8pt;
+  color: var(--muted);
+}
+.project-meta span:not(:last-child)::after {
+  content: '／';
+  margin: 0 0.7em;
+  color: var(--faint);
+}
+.project-overview {
+  text-align: justify;
+}
+.project-highlights {
+  margin: 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.project-highlights li {
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+  margin-bottom: 2px;
+  text-align: justify;
+}
+.project-highlights li::before {
+  content: '–';
+  margin-right: 0.55em;
+  color: #cfcfcf;
+}
+.project-stack {
+  margin-top: 6px;
+  font-size: 7.5pt;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* ---- 受賞歴 ---- */
+.awards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 2em;
+}
+.award .m-date {
+  margin-right: 0.9em;
+  color: var(--muted);
+}
+
+/* ---- 自己 PR ---- */
+.pr-section {
+  margin-bottom: 16px;
+}
+.pr-section:last-child {
+  margin-bottom: 0;
+}
+.pr-section-title {
+  margin: 0 0 7px;
+  font-size: 10pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+.pr-item {
+  margin-bottom: 14px;
+  break-inside: avoid;
+}
+.pr-item:last-child {
+  margin-bottom: 0;
+}
+.pr-item-title {
+  margin: 0 0 2px;
+  font-size: 9pt;
+  font-weight: 700;
+}
+.pr-item-body,
+.pr-body {
+  text-align: justify;
+}
+
+/* ---- 印刷 ---- */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+  }
+  .sheet {
+    width: var(--page-w);
+    height: var(--page-h);
+    min-height: var(--page-h);
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .sheet:last-child {
+    break-after: auto;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
