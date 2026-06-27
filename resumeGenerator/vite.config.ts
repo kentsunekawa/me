@@ -4,7 +4,10 @@ import yaml from '@rollup/plugin-yaml'
 
 // content/resume.yaml を import で構造化データとして読み込めるよう yaml プラグインを使う。
 // 印刷は dev サーバー（npm run dev）の localhost を開いて ⌘P → PDF 保存で行う。
-export default defineConfig({
-  base: './',
+//
+// 本番は VitePress サイト（GitHub Pages: /me/）に相乗りし /me/resume/ で配信するため、
+// build 時のみ base を /me/resume/ にする。dev はルート（/）。
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/me/resume/' : '/',
   plugins: [react(), yaml()],
-})
+}))

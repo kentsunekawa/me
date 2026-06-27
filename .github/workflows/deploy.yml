@@ -1,4 +1,4 @@
-name: Deploy VitePress site to Pages
+name: Deploy site to Pages (VitePress + 職務経歴書)
 
 on:
   push:
@@ -18,20 +18,34 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: vitePress
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: vitePress/package-lock.json
-      - name: Install
-        run: npm ci
-      - name: Build
-        run: npm run build
+          cache-dependency-path: |
+            vitePress/package-lock.json
+            resumeGenerator/package-lock.json
+
+      # プロフィールサイト（/me/）
+      - name: Install & build VitePress
+        working-directory: vitePress
+        run: |
+          npm ci
+          npm run build
+
+      # 職務経歴書（/me/resume/ に相乗り）
+      - name: Install & build resume
+        working-directory: resumeGenerator
+        run: |
+          npm ci
+          npm run build
+
+      # VitePress の出力配下に resume を配置 → /me/resume/ で配信される
+      - name: Place resume under /resume
+        run: cp -r resumeGenerator/dist vitePress/.vitepress/dist/resume
+
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:

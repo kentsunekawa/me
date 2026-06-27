@@ -58,6 +58,37 @@ p {
   }
 }
 
+/* ---- ツールバー（画面のみ）---- */
+.toolbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  gap: 8px;
+}
+.toolbar-btn {
+  font-family: inherit;
+  font-size: 9pt;
+  line-height: 1;
+  padding: 9px 15px;
+  border-radius: 7px;
+  border: 1px solid var(--line-ink);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+}
+.toolbar-btn:hover {
+  opacity: 0.85;
+}
+.toolbar-btn--primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
 /* ---- A4 シート ---- */
 .sheet {
   position: relative;
@@ -346,6 +377,10 @@ p {
   }
   body {
     background: #fff;
+  }
+  /* ツールバー等、画面専用 UI は印刷に出さない */
+  .no-print {
+    display: none !important;
   }
   .sheet {
     width: var(--page-w);
