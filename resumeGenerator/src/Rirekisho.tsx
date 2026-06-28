@@ -2,6 +2,11 @@ import { useState } from 'react'
 import './rirekisho.css'
 import type { HistoryContentRow, HistoryRow, QualRow, RirekishoData } from './rirekisho-types'
 
+// content/private/photo.{jpg,png,…} があれば証明写真として表示（gitignore・ローカルのみ）。
+// 無ければプレースホルダの枠のまま。eager glob なので欠けていてもエラーにならない。
+const photoModules = import.meta.glob('../content/private/photo.*', { eager: true, import: 'default' })
+const photoUrl = Object.values(photoModules)[0] as string | undefined
+
 // pageBreak で学歴・職歴をページ（横）ごとに分割する。
 function splitByPageBreak(rows: HistoryRow[]): HistoryContentRow[][] {
   const pages: HistoryContentRow[][] = [[]]
@@ -236,7 +241,7 @@ export function Rirekisho({ data }: { data: RirekishoData }) {
             </table>
               {/* 写真：個人情報ラッパー基準で absolute 配置（一旦 右上）*/}
               <div className="r-photo">
-                <span>写真</span>
+                {photoUrl ? <img className="r-photo-img" src={photoUrl} alt="" /> : <span>写真</span>}
               </div>
             </div>
 

@@ -246,6 +246,17 @@ body {
   justify-content: center;
   color: var(--faint);
   font-size: 8pt;
+  overflow: hidden;
+}
+.r-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* 写真を入れたら枠線は消す（プレースホルダの時だけ枠を出す）*/
+.r-photo:has(.r-photo-img) {
+  border: none;
 }
 .r-furigana {
   font-size: 9pt; /* ふりがなの値。本文10ptより少し小さめ */
