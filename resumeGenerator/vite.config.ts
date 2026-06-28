@@ -10,6 +10,10 @@ import yaml from '@rollup/plugin-yaml'
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/me/resume/' : '/',
   plugins: [react(), yaml()],
+  // content/private は data/resources（private リポ me-resources）への symlink。
+  // root 外のその実体を dev で読めるよう、symlink を保持しつつ data/ 配下へのアクセスを許可する。
+  resolve: { preserveSymlinks: true },
+  server: { fs: { allow: ['../..'] } },
   build: {
     rollupOptions: {
       // 履歴書(rirekisho.html)は個人情報を含むため本番ビルドに含めない（＝公開しない）。
