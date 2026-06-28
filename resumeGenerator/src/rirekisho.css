@@ -1,0 +1,378 @@
+/* =========================================================
+   履歴書（日本書式・A3 横＝A4 縦 ×2 の見開き）— ローカル確認専用
+   - 標準様式（PDF 参考）を A3 横 1 枚に配置（左ページ / 右ページ）
+   - 印刷（⌘P / 印刷ボタン）で A3 横の PDF になる
+   - ツールバー（志望先の切替・印刷）は .no-print で印刷に出さない
+   ========================================================= */
+
+:root {
+  --page-w: 420mm; /* A3 横 */
+  --page-h: 297mm;
+
+  /* 余白：左右（各ページ）= --mx、上下 = その 1.5 倍。
+     各ページが個別に左右 --mx を持つので、左右ページの間は 2*--mx、外側は --mx あく。 */
+  --mx: 12mm;
+  --my: calc(1.5 * var(--mx));
+  --content-h: calc(var(--page-h) - 2 * var(--my));
+
+  /* 基準行高（1 行 = 1u）＝ 内容高 ÷ 29.5（固定値・データ数では変えない）。
+     29.5 = header2 ＋ 氏名4 ＋ 住所6 ＋ 氏名住所→学歴 gap0.5 ＋ 学歴職歴タイトル1 ＋ 学歴職歴16行（空行含む）。
+     ※ header を 3→2、header→氏名の gap を 0 に詰めたぶん、÷31 より行が高くなる。 */
+  --u: calc(var(--content-h) / 29.5);
+
+  --ink: #1a1a1a;
+  --muted: #555;
+  --faint: #aaa;
+  --line: #333;
+  --label-bg: #f3f4f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic',
+    'YuGothic', 'Noto Sans JP', 'Meiryo', sans-serif;
+  color: var(--ink);
+  font-size: 10pt; /* 入力（値）の文字。ラベルは 8pt 固定なので相対的に値が大きくなる */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- 画面プレビュー ---- */
+@media screen {
+  body {
+    background: #e9eaec;
+    padding: 28px 0 44px;
+  }
+  .sheet {
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.12);
+    margin: 0 auto 24px;
+  }
+}
+
+/* ---- A4 横シート ---- */
+.sheet {
+  position: relative;
+  width: var(--page-w);
+  min-height: var(--page-h);
+  padding: var(--my) 0; /* 上下のみ。左右はページ側（--mx）で持つ */
+  background: #fff;
+}
+
+/* ---- ツールバー（画面のみ）---- */
+.toolbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
+}
+.toolbar-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9pt;
+  color: var(--muted);
+}
+.toolbar-field select {
+  font: inherit;
+  font-size: 9pt;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.toolbar-btn {
+  font-family: inherit;
+  font-size: 9pt;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---- ヘッダー ---- */
+.r-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between; /* タイトル左・日付右 */
+  width: 70%; /* 氏名生年月日ブロックと同じ幅。日付の右端がそこに揃う */
+  height: calc(2 * var(--u));
+  padding-bottom: 2mm;
+}
+/* header と氏名ブロックの間は詰める（セクション間 gap 0.5u を打ち消す）。
+   .r-page > * + * と詳細度を揃えると負けるので、クラス2つで詳細度を上げて勝たせる。 */
+.r-page > .r-head + * {
+  margin-top: 0;
+}
+.r-title {
+  margin: 0;
+  font-size: 22pt;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+}
+.r-date {
+  font-size: 10pt;
+  color: var(--muted);
+}
+
+/* ---- 見開き（左ページ / 右ページ）---- */
+/* 各ブロックは行（n×u）の積み上げで構成し、左右とも 39u になるよう行数で調整する。 */
+.r-spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  height: var(--content-h);
+}
+.r-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 0 var(--mx); /* 各ページの左右余白 → 中央は 2*--mx あく */
+}
+/* セクション間は 0.5 行ぶん空ける */
+.r-page > * + * {
+  margin-top: calc(0.5 * var(--u));
+}
+/* セクション内のテーブルどうしは罫線（1.5px）をぴったり重ねて二重線を防ぐ */
+.r-section > * + * {
+  margin-top: -1.5px;
+}
+
+/* ---- テーブル共通 ---- */
+.r-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1.5px solid var(--line); /* セクションの外枠は太線（内側のセルは 1px）*/
+}
+.r-table th,
+.r-table td {
+  height: var(--u); /* 1 行 = 1u */
+  border: 1px solid var(--line);
+  padding: 0 7px;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+/* ふりがな＋漢字の組のうち、漢字（値）の行は 2u */
+.r-row-kanji > th,
+.r-row-kanji > td {
+  height: calc(2 * var(--u));
+}
+.r-label {
+  width: 5.5em;
+  font-size: 8pt;
+  color: var(--muted);
+  white-space: nowrap;
+}
+/* ラベルセルの右線はなし（ラベルと値の間の罫線を消す）。hidden は border-collapse で確実に抑止。 */
+.r-table .r-label {
+  border-right-style: hidden;
+}
+.r-label-narrow {
+  width: 4em;
+}
+
+/* 住所テーブル：現住所の値（2列目）と E-mail の値（4列目）の幅を 3:1 にする */
+.r-address {
+  table-layout: fixed;
+}
+/* ラベル列(1・3列目)は % 指定をやめ、両テーブル共通の .r-label / .r-label-narrow の
+   固定幅(em＝親幅に依存しない)に任せて、氏名ブロックとラベル幅を揃える。
+   現住所の値列(2列目)を auto にして余り幅を全部吸わせる（fixed の按分でラベルが広がるのを防ぐ）。
+   E-mail の値列(4列目)を固定%にすることで、現住所:E-mail ≒ 3:1 になる。 */
+.r-address td:nth-child(4) {
+  width: 21%;
+}
+
+/* ── 太線にする境界（1.5px）── */
+/* 氏名の下 */
+.r-basic .r-row-kanji > th,
+.r-basic .r-row-kanji > td {
+  border-bottom: 1.5px solid var(--line);
+}
+/* 生年月日と性別の間（生年月日の値の右）*/
+.r-table .r-birth {
+  border-right: 1.5px solid var(--line);
+}
+/* 現住所・連絡先（とふりがな）の右＝住所側の値列(2列目)の右 */
+.r-address td:nth-child(2) {
+  border-right: 1.5px solid var(--line);
+}
+/* 現住所と E-mail の下＝現住所の行(2行目)の下 */
+.r-address tr:nth-child(2) > th,
+.r-address tr:nth-child(2) > td {
+  border-bottom: 1.5px solid var(--line);
+}
+
+/* ---- 個人情報 ---- */
+/* 氏名・生年月日ブロックは 70% 幅にして右側に余白をあける。 */
+.r-person .r-basic {
+  width: 70%;
+}
+/* 写真は個人情報ラッパー（氏名生年月日＋住所連絡先）基準で absolute 配置。一旦 右上。 */
+.r-idblock {
+  position: relative;
+}
+.r-photo {
+  position: absolute;
+  /* 下端を電話の行の 0.5 行手前(3.5u)に合わせる。高さ40mm固定なので上は枠外へはみ出す */
+  top: calc(3.5 * var(--u) - 40mm);
+  /* 氏名ブロック(70%)の右に空けた余白(右30%)の中心＝幅の85%に写真の中心を合わせる */
+  left: 85%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 30mm;
+  height: 40mm;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--faint);
+  font-size: 8pt;
+}
+.r-furigana {
+  font-size: 9pt; /* ふりがなの値。本文10ptより少し小さめ */
+  color: var(--muted);
+}
+.r-name {
+  font-size: 15pt;
+  font-weight: 700;
+}
+.r-gender {
+  width: 4em;
+  text-align: center;
+}
+/* 連絡先の注記は入力欄の右上に absolute 配置 */
+.r-contact-cell {
+  position: relative;
+}
+.r-note {
+  position: absolute;
+  top: 2px;
+  right: 7px;
+  color: var(--faint);
+  font-size: 7.5pt;
+}
+
+/* ---- 学歴・職歴 / 資格 ---- */
+.r-table thead th {
+  text-align: center;
+  font-size: 8.5pt;
+  color: var(--muted);
+  border-bottom: 3px double var(--line); /* タイトル行の下は二重線・背景なし */
+}
+/* 資格・免許は学歴・職歴の直下に続くので、その境目（資格タイトルの上）を太線にする */
+.r-qual thead th {
+  border-top: 1.5px solid var(--line);
+}
+.r-c-year {
+  width: 4.5em;
+  text-align: center;
+  white-space: nowrap;
+}
+.r-c-month {
+  width: 3em;
+  text-align: center;
+  white-space: nowrap;
+}
+/* ボーダーはベースの .r-table th/td (詳細度 0,1,1) に勝つよう .r-table を前置 */
+.r-table .r-c-year {
+  text-align: center; /* 年は中央揃え（ベースの left に勝たせる）*/
+  border-right: 1px dotted var(--line); /* 年|月 の境界は点線 */
+}
+.r-table .r-c-month {
+  text-align: center; /* 月は中央揃え */
+  border-left: 1px dotted var(--line); /* 年|月 の境界は点線（両側を点線にして solid 優先を回避）*/
+  border-right: 1.5px solid var(--line); /* 月|内容 の境界は太線 */
+}
+/* ベースの .r-table td (text-align:left) に勝たせる詳細度。太字にはしない。 */
+.r-table .r-heading {
+  text-align: center;
+  letter-spacing: 0.5em;
+}
+.r-right {
+  float: right;
+}
+
+/* ---- 志望動機 / 本人希望 ---- */
+.r-box {
+  border: 1.5px solid var(--line); /* セクションの外枠は太線 */
+}
+.r-box-label {
+  display: flex;
+  align-items: center;
+  height: var(--u); /* タイトル行 = 1u */
+  padding: 0 7px;
+  border-bottom: 3px double var(--line); /* タイトル行の下は二重線・背景なし */
+  font-size: 8pt;
+  color: var(--muted);
+}
+.r-box-body {
+  padding: 6px 7px;
+  text-align: justify;
+}
+/* 志望動機欄は右ページの残りを埋める（フリー記入欄）。本人希望欄は最下部に固定サイズ。 */
+.r-box--motivation {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.r-box--motivation .r-box-body {
+  flex: 1;
+}
+.r-box--request .r-box-body {
+  min-height: calc(5 * var(--u));
+}
+.r-box-body p {
+  margin: 0 0 6px;
+}
+.r-box-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- 印刷 ---- */
+@media print {
+  @page {
+    size: A3 landscape;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .sheet {
+    width: var(--page-w);
+    height: var(--page-h);
+    min-height: var(--page-h);
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+  .sheet:last-child {
+    break-after: auto;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

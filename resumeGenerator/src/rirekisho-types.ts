@@ -11,7 +11,6 @@ export interface RirekishoBasic {
   birthYear: number
   birthMonth: number
   birthDay: number
-  age: number
   gender: string
 }
 
@@ -44,6 +43,12 @@ export interface QualRow {
   text: string
 }
 
+/** 志望動機（提出先ごと）。target はキー兼表示名。 */
+export interface Motivation {
+  target: string
+  body: string
+}
+
 export interface RirekishoData {
   meta: RirekishoMeta
   basic: RirekishoBasic
@@ -51,6 +56,7 @@ export interface RirekishoData {
   contact: RirekishoAddress
   history: HistoryRow[]
   qualifications: QualRow[]
-  motivation: string
+  activeMotivation?: string
+  motivations?: Motivation[]
   request: string
 }
