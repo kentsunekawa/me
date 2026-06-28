@@ -62,3 +62,28 @@ PDF は CI で生成せず、ローカルで印刷したものを `public/resume
 プロジェクトは `src/Resume.tsx` の `PROJECTS_PER_PAGE`（1 ページの件数）で割る。
 件数や文量を増やして収まらなくなったら、この値を下げてプロジェクトを複数ページに分ける。
 実際の収まりは画面の A4 プレビューで確認しながら、`resume.yaml` の文量で調整する。
+
+## 履歴書（日本書式・ローカル限定）
+
+`rirekisho.html` は日本書式の履歴書（A3 横＝A4 縦 2 ページの見開き）。個人情報を含むため
+**本番ビルドから除外**（`vite.config.ts` の `rollupOptions.input`）しており、`/me/resume/` には
+**デプロイされない**。`npm run dev` で `/rirekisho.html` を開いて確認・印刷する（用紙 A3）。
+
+### 個人情報の置き場（me-resources ＋ symlink）
+
+履歴書の実データ（住所・写真など）は **private リポ `me-resources`** で管理し、公開リポ（`me`）には出さない。
+
+- 実体：`data/resources/resume-private/`（`rirekisho.yaml` / `photo.jpg`）… me-resources 側で git 管理
+- 参照：`resumeGenerator/content/private` → 上記への **symlink**（me 側では gitignore・コミットしない）
+- テンプレ：`content/rirekisho.example.yaml`（ダミー値・me にコミット）
+
+クローン直後など symlink が無い場合は作り直す（`me` と `me-resources` が `data/` 配下に並んでいる前提）：
+
+```sh
+ln -s ../../../resources/resume-private resumeGenerator/content/private
+```
+
+証明写真は `data/resources/resume-private/photo.jpg`（または `.png`）として置けば表示される。
+
+> Vite が root 外（`data/resources`）を dev で読めるよう、`vite.config.ts` で
+> `resolve.preserveSymlinks` と `server.fs.allow` を設定している。
